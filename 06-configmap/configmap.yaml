@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rancher-demo-config
+  namespace: default
+data:
+  color: green

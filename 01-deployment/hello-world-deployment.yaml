@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rancher-demo
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rancher-demo
+  template:
+    metadata:
+      labels:
+        app: rancher-demo
+    spec:
+      containers:
+      - image: rancher/hello-world:latest
+        name: rancher-demo
+        ports:
+        - containerPort: 80
+          name: web
+          protocol: TCP

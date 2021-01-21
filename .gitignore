@@ -1,0 +1,7 @@
+.idea
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+kubeconfig
+kubeconfig*

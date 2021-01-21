@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rancher-demo
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    app: rancher-demo
+  ports:
+    - name: web
+      port: 80
+      targetPort: web
