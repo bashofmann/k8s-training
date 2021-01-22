@@ -22,10 +22,19 @@ Run k3sup commands and export Kubeconfig
 cd ..
 ```
 
+## Create first pod
+
+```
+kubectl apply -f 01-pod/
+```
+
+* Describe a pod
+* Show logs of a pod
+
 ## Create first deployment
 
 ```
-kubectl apply -f 01-deployment/
+kubectl apply -f 02-deployment/
 ```
 
 Follow rollout
@@ -34,9 +43,6 @@ Follow rollout
 kubectl rollout status deployment rancher-demo
 kubectl get pods --all-namespaces -o wide
 ```
-
-* Describe a pod
-* Show logs of a pod
 
 Access application
 ```
@@ -47,7 +53,7 @@ curl http://POD_IP
 ## Create service
 
 ```
-kubectl apply -f 02-service/
+kubectl apply -f 03-service/
 kubectl get services
 kubectl describe service rancher-demo
 ```
@@ -63,7 +69,7 @@ curl http://rancher-demo
 Update IP in ingress.yaml (`kubectl get nodes -o wide`)
 
 ```
-kubectl apply -f 03-ingress/
+kubectl apply -f 04-ingress/
 kubectl get ingress
 ```
 
@@ -72,7 +78,7 @@ Go to ingress
 ## Update deployment
 
 ```
-kubectl apply -f 04-deployment-update/
+kubectl apply -f 05-deployment-update/
 watch kubectl get pods
 ```
 
@@ -85,7 +91,7 @@ kubectl top pods
 ```
 
 ```
-kubectl apply -f 05-deployment-advanced-features/
+kubectl apply -f 06-deployment-advanced-features/
 watch kubectl get pods
 ```
 
@@ -94,14 +100,14 @@ Describe not ready pod
 Fix health check
 
 ```
-kubectl apply -f 05-deployment-advanced-features/
+kubectl apply -f 06-deployment-advanced-features/
 watch kubectl get pods
 ```
 
 ## Add configmap
 
 ```
-kubectl apply -f 06-configmap/
+kubectl apply -f 07-configmap/
 watch kubectl get pods
 ```
 
@@ -113,7 +119,7 @@ helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 ```
 
 ```
-cd 07-rancher
+cd 08-rancher
 ./print_install_commands.sh
 ```
 
@@ -147,7 +153,7 @@ helm upgrade --install loki loki/loki --namespace loki --create-namespace
 Configure logging flow and grafana datasource
 
 ```
-kubectl apply -f 08-monitoring-logging
+kubectl apply -f 09-monitoring-logging
 kubectl rollout restart deployment -n cattle-monitoring-system rancher-monitoring-grafana
 ```
 
